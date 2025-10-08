@@ -7,6 +7,11 @@ public class Damager : MonoBehaviour
     [Header ("Damager")]
    [SerializeField] private GameObject uiDamager;
 
+    private void Start()
+    {
+        damager = Damage();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
@@ -24,6 +29,7 @@ public class Damager : MonoBehaviour
         {
             case "Player":
                 StopCoroutine(damager);
+                uiDamager.SetActive(false);
                 break;
         }
     }

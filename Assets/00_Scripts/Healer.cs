@@ -29,6 +29,7 @@ public class Healer : MonoBehaviour
       {
          case "Player":
             StopCoroutine(healer);
+            uiHealer.SetActive(false);
             break;
       }
    }

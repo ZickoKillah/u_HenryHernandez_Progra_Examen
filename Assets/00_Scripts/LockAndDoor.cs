@@ -2,18 +2,28 @@ using UnityEngine;
 
 public class LockAndDoor : MonoBehaviour
 {
-    
-        
-    [SerializeField] private GameObject door;
-    [SerializeField] private GameObject pivot;
-    
 
-    
-    private void OnTriggerEnter(Collider other)
+    public Keys keys;
+    [SerializeField] private GameObject door;
+    private Animator doorAnimator;
+
+
+    private void Start()
     {
-        if (Keys.key1 && Keys.key2)
-        {
+        doorAnimator = door.GetComponent<Animator>();
+    }
+    private void Update(){
+
+       
             
-        }
+        
+
+        
+            if (keys.key1 && keys.key2)
+            {
+                doorAnimator.SetBool("Abierto", true);
+            }
+
+            
     }
 }

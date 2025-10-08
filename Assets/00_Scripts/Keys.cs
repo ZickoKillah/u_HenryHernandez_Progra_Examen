@@ -2,9 +2,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class Keys : MonoBehaviour
-{
-   public static bool key1 = false;
-   public static bool key2 = false;
+{ 
+    public bool key1 = false;
+   public bool key2 = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,4 +18,7 @@ public class Keys : MonoBehaviour
                 break;
         }
     }
+
+    
+        
 }
