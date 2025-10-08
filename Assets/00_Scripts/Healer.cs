@@ -7,7 +7,7 @@ public class Healer : MonoBehaviour
    private IEnumerator healer;
    private int heal = 5;
    [SerializeField] private GameObject uiHealer;
-
+  public Keys keys;
    private void Start()
    {
       healer = Heal();
@@ -18,8 +18,12 @@ public class Healer : MonoBehaviour
       switch (other.tag)
       {
          case "Player":
-            StartCoroutine(healer);
+            if (keys.key1 && keys.key2)
+            {
+               StartCoroutine(healer);  
+            }
             break;
+         
       }
    }
 

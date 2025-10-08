@@ -1,5 +1,6 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
   
@@ -30,13 +31,26 @@ public float health = 100f;
     public void Damage (int damage)
     {
         health -= damage;
+        if (health <= 0)
+        {
+            GameOver();
+        }
     }
 
+    public void GameOver()
+    {
+        SceneManager.LoadScene("02_Scenes/GameOver");
+        
+    }
     public void Heal(int heal)
     {
         health += heal;
     }
-    
+
+    public void Resethealth()
+    {
+        health = 100f;
+    }
     
     
 }
