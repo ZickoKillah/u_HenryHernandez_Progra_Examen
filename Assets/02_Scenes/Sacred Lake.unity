@@ -679,6 +679,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7685423809495335312, guid: b3f0a0770fa85f1469319660278e9ebe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1904929817}
+    - targetCorrespondingSourceObject: {fileID: 7685423809495335312, guid: b3f0a0770fa85f1469319660278e9ebe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1904929818}
   m_SourcePrefab: {fileID: 100100000, guid: b3f0a0770fa85f1469319660278e9ebe, type: 3}
 --- !u!1 &817941876
 GameObject:
@@ -693,7 +696,7 @@ GameObject:
   - component: {fileID: 817941878}
   - component: {fileID: 817941877}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: NPC2
   m_TagString: NPC2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1160,7 +1163,7 @@ GameObject:
   - component: {fileID: 1097813953}
   - component: {fileID: 1097813952}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: NPC1
   m_TagString: NPC1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1495,6 +1498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Keys
   key1: 0
   key2: 0
+  nPc1: {fileID: 1097813951}
 --- !u!114 &1904929817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1509,6 +1513,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LockAndDoor
   keys: {fileID: 1904929816}
   door: {fileID: 134558956}
+--- !u!114 &1904929818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904929808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde67296beb7e8643a3554ae17edfcfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  itemList: []
 --- !u!1 &2106665843
 GameObject:
   m_ObjectHideFlags: 0
