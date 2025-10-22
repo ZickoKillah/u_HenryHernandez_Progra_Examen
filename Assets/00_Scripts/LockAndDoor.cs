@@ -8,11 +8,21 @@ public class LockAndDoor : MonoBehaviour
     [SerializeField] private GameObject door; 
     private Animator doorAnimator;
     private Inventory playerInventory;
+    //[SerializeField] private GameObject doorTrigger;
 
     private void Start()
     {
         doorAnimator = door.GetComponent<Animator>();
-        playerInventory = playerInventory.GetComponent<Inventory>();
+        GameObject player = GameObject.Find("Player");
+        if (player != null)
+        {
+            playerInventory = player.GetComponent<Inventory>();
+        }
+        else
+        {
+            Debug.LogError("No player found");
+        }
+        
     }
     private void Update(){
 
@@ -37,8 +47,12 @@ public class LockAndDoor : MonoBehaviour
     {
         if (keys.TodasLasLlaves())
         {
-            //Item key1Item = new Item("Key1", "Keep on, one more.");
-            //playerInventory.RemoveItem(itemRemove);
+            doorAnimator.SetBool("Abierto", true);
+            playerInventory.RemoveItem(itemName:"Key1");
+            playerInventory.RemoveItem(itemName:"Key2");
         }
+
+        
+        
     }
 }

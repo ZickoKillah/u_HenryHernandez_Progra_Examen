@@ -9,7 +9,8 @@ public class Keys : MonoBehaviour
     private Inventory playerInventory;
     private Collider npc1;
     [SerializeField] private GameObject nPc1;
-
+    public Sprite key1Sprite;
+    public Sprite key2Sprite;
     private void Start()
     {
         playerInventory = GetComponent<Inventory>();
@@ -25,7 +26,7 @@ public class Keys : MonoBehaviour
         {
             case "NPC1":
                 key1 = true;
-                Item key1Item = new Item("Key1", "Keep on, one more.");
+                Item key1Item = new Item("Key1", "Keep on, one more.", key1Sprite);
                 playerInventory.AddItem(key1Item);
                 nPc1.GetComponent<Collider>().enabled = false;
 
@@ -34,7 +35,7 @@ public class Keys : MonoBehaviour
                 break;
             case "NPC2":
                 key2 = true;
-                Item key2Item = new Item("Key2", "Ok, go through it");
+                Item key2Item = new Item("Key2", "Ok, go through it", key2Sprite);
                 playerInventory.AddItem(key2Item);
                 other.GetComponent<Collider>().enabled = false;
 
