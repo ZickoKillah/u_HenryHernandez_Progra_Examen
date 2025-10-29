@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Inventory : MonoBehaviour
 {    
@@ -92,8 +93,21 @@ public class Inventory : MonoBehaviour
     {
         if (Keyboard.current.iKey.wasPressedThisFrame)
         {
-           inventoryVisible = !inventoryVisible; 
-           inventoryPanel.SetActive(inventoryVisible);
+           inventoryVisible = !inventoryVisible;
+           if (inventoryVisible)
+           {
+               inventoryPanel.SetActive(inventoryVisible);
+               //animar apertura de inventario
+               inventoryPanel.transform.localScale = Vector3.zero;
+               inventoryPanel.transform.DOScale(1f,0.5f).SetEase(Ease.OutBounce);
+           }
+           else
+           {
+               inventoryPanel.transform.DOScale(0f, 0.5f).SetEase(Ease.InBack)
+                   .OnComplete(() => inventoryPanel.SetActive(false));
+
+           }
+           
           
         }
     }
