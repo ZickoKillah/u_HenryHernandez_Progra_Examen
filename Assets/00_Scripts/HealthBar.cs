@@ -42,9 +42,38 @@ public class HealthBar : MonoBehaviour
           healthBar.size = Mathf.Lerp(healthBar.size, targetValue, Time.deltaTime * updateHealth);
           yield return null;
           //Metodo:Que el color del handle esté actualizado a los colores que nosotros vamos a querer
+          UpdateHealthColor();
           
       }
       //Al finalizar, establecemos el valor exacto
       healthBar.size = targetValue;
+  }
+
+  private void UpdateHealthColor()
+  {
+      //Obtener el componente image del handle
+      Image handleImage = healthBar.handleRect.GetComponent <Image> ();
+      //Image handleImage = GameObject.Find("handle").GetComponent<Image>();
+      //Calcular el porcentaje de salud
+      float healthPercent = (float)GameManager.instance.health / 100f;
+    // 2 maneras de cambiar el color
+    /*if (healthPercent > 0.5f)
+    {
+        handleImage.color = Color.lightGreen;
+    }
+    else if (healthPercent > 0.3f)
+    {
+        handleImage.color = Color.yellowNice;
+    }
+    else
+    {
+        handleImage.color = Color.darkRed;
+    }*/
+    handleImage.color = healthPercent switch
+    {
+        > 0.5f => handleImage.color = Color.lightGreen,
+        >= 0.3f and <= 0.5f => handleImage.color = Color.lightGoldenRod,
+        _ => handleImage.color = Color.darkRed,
+    };
   }
 }

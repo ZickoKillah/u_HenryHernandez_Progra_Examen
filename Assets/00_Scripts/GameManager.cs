@@ -44,7 +44,8 @@ public float health = 100f;
     }
     public void Heal(int heal)
     {
-        health += heal;
+        //health += heal;
+        health = Mathf.Clamp(health += heal, 0, 100);
     }
 
     public void Resethealth()
