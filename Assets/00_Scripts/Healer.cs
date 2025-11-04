@@ -18,7 +18,8 @@ public class Healer : MonoBehaviour
       switch (other.tag)
       {
          case "Player":
-            if (keys.key1 && keys.key2)
+            //if (keys.key1 && keys.key2)
+            if (keys.TodasLasLlaves())
             {
                StartCoroutine(healer);  
             }

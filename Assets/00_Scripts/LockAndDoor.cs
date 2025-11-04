@@ -8,6 +8,8 @@ public class LockAndDoor : MonoBehaviour
     [SerializeField] private GameObject door; 
     private Animator doorAnimator;
     private Inventory playerInventory;
+
+    [SerializeField] private GameObject terrain;
     //[SerializeField] private GameObject doorTrigger;
 
     private void Start()
@@ -50,6 +52,8 @@ public class LockAndDoor : MonoBehaviour
             doorAnimator.SetBool("Abierto", true);
             playerInventory.RemoveItem(itemName:"Key1");
             playerInventory.RemoveItem(itemName:"Key2");
+            terrain.SetActive(true);
+            
         }
 
         
