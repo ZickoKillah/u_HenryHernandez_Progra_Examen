@@ -10,6 +10,8 @@ public class LockAndDoor : MonoBehaviour
     private Inventory playerInventory;
 
     [SerializeField] private GameObject terrain;
+
+    [SerializeField] private GameObject chamberBeggining;
     //[SerializeField] private GameObject doorTrigger;
 
     private void Start()
@@ -53,6 +55,7 @@ public class LockAndDoor : MonoBehaviour
             playerInventory.RemoveItem(itemName:"Key1");
             playerInventory.RemoveItem(itemName:"Key2");
             terrain.SetActive(true);
+            chamberBeggining.SetActive(false);
             
         }
 
