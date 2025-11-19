@@ -1,7 +1,9 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 // Componente del player Input
 [RequireComponent(typeof(PlayerControls))]
@@ -43,6 +45,20 @@ public class PlayerController : MonoBehaviour
   
    // Input System
    private PlayerControls playerControls;
+   
+   
+   //Raycast 
+   [Header("Raycast Interactions")]
+   [Space(10)]
+   [SerializeField] private float interactionDistance = 5f;
+   [Space(5)]
+   [SerializeField] private LayerMask interactionLayerMask;
+
+[Header("Crosshair feedback")]
+[Space(10)]
+[SerializeField] Image crosshairImage; 
+[SerializeField] Sprite defaultCrosshair;
+[SerializeField] Sprite interactableCrosshair;
 
 
    private void Awake()
@@ -61,6 +77,7 @@ public class PlayerController : MonoBehaviour
        playerControls.Gameplay.Look.canceled   += _ => lookInput = Vector2.zero;
         
        playerControls.Gameplay.Jump.performed  += _ => TryJump();
+       playerControls.Gameplay.Interact.performed += _ => TryInteract();
        
    }
 
@@ -98,9 +115,41 @@ public class PlayerController : MonoBehaviour
        if (characterController.isGrounded)
            verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
    }
-   
 
-   private void Update()
+   private void TryInteract()
+   {
+       Ray ray = new Ray(cameraTransform.transform.position, cameraTransform.transform.forward);
+       //Variable para guardar los datos del golpe
+       RaycastHit hit;
+       //Lanzar el Raycast fisico
+       if (Physics.Raycast(ray, out hit, interactionDistance, interactionLayerMask))
+       {
+           //Buscar el Contrato  en el objeto golpeado
+           //TryGetComponent que verifica si el collider del objeto tiene una interfaz
+           //que si encuentra la interfaz, que la llame
+           if (hit.collider.TryGetComponent(out IInteractable interactable))
+           {
+               interactable.Interact();
+               Debug.Log($"Interacted: {hit.collider.name}");
+           }
+           else
+           {
+               Debug.Log($"Objeto golpeado ({hit.collider.name}) no es una interfaz");
+           }
+       }
+           
+   }
+
+   private void OnDrawGizmos()
+   {
+       if (cameraTransform != null)
+       {
+           Gizmos.color = Color.red;
+           Gizmos.DrawRay(cameraTransform.position, cameraTransform.forward * interactionDistance);
+       }
+      
+   }
+    private void Update()
    {
        UpdateLook();
        UpdateMove();
