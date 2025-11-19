@@ -153,8 +153,25 @@ public class PlayerController : MonoBehaviour
    {
        UpdateLook();
        UpdateMove();
+       UpdateInteractionHit();
    }
 
+    private void UpdateInteractionHit()
+    {
+        //programacion defensiva 
+        if (crosshairImage == null) return;
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, interactionDistance, interactionLayerMask))
+        {
+            crosshairImage.sprite = interactableCrosshair;
+            
+        }
+        else
+        {
+            crosshairImage.sprite = defaultCrosshair;
+        }
+    }
 
    private void UpdateLook()
    {
