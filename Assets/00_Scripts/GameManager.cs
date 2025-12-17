@@ -39,7 +39,7 @@ public float health = 100f;
 
     public void GameOver()
     {
-        SceneManager.LoadScene("02_Scenes/GameOver");
+        SceneManager.LoadScene("02_Scenes/MainMenu");
         
     }
     public void Heal(int heal)

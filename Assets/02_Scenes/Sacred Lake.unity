@@ -5825,7 +5825,7 @@ GameObject:
   - component: {fileID: 1583663816}
   - component: {fileID: 1583663815}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: DMGCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7199,7 +7199,7 @@ GameObject:
   - component: {fileID: 2121854672}
   - component: {fileID: 2121854676}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: HealerCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
